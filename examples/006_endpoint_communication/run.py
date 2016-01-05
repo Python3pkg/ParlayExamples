@@ -8,6 +8,10 @@ import parlay
 class Adder(parlay.ParlayCommandEndpoint):
 
     @parlay.parlay_command()
+    def echo(self, text):
+        print text
+
+    @parlay.parlay_command()
     def add(self, x, y):
         """
         Will add x and y and then return and echo the result
@@ -24,6 +28,10 @@ class Adder(parlay.ParlayCommandEndpoint):
 
 @parlay.local_endpoint(auto_connect=True)
 class Multiplier(parlay.ParlayCommandEndpoint):
+
+    @parlay.parlay_command()
+    def echo(self, text):
+        print text
 
     @parlay.parlay_command()
     def multiply(self, x, y):
@@ -44,7 +52,11 @@ class Multiplier(parlay.ParlayCommandEndpoint):
 class Combiner(parlay.ParlayCommandEndpoint):
 
     @parlay.parlay_command()
-    def multiply(self, x, y):
+    def echo(self, text):
+        print text
+
+    @parlay.parlay_command()
+    def add_products(self, x, y):
         """
         Will add x and y and then return and echo the result
 
@@ -53,7 +65,9 @@ class Combiner(parlay.ParlayCommandEndpoint):
         :type x int
         :type y int
         """
-        result = x * y
+        adder = self.get_endpoint_by_name("Adder")
+        multiplier = self.get_endpoint_by_name("Multiplier")
+        result = adder.add(x, y) + multiplier.multiply(x,y)
         self.echo(result)
 
         return result
