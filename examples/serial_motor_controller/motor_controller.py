@@ -31,7 +31,7 @@ class SerialMotorControllerItem(LineEndpoint):
         :return: none
         """
         if velocity > 10 or velocity < -10:
-            return "Error"
+            raise ValueError("Velocity outside range")
         velocity = int(velocity)
         direction = "f" if velocity >= 0 else "r"
         self.send_raw_data("{}{}{}".format(self._motor_index, direction, velocity))
