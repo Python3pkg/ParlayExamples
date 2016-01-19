@@ -11,6 +11,7 @@ class Adder(parlay.ParlayCommandEndpoint):
     def echo(self, text):
         """
         Will Echo whatever was sent to the python console
+        :type text str
         """
 
         print text
@@ -19,11 +20,19 @@ class Adder(parlay.ParlayCommandEndpoint):
     def add(self, x, y):
         """
         Will add x and y and then return and echo the result
+
+        ###Parlay will perform automatic type coercian if possible if the type is specified here###
+
+        :type x int
+        :type y int
         """
-        result = int(x) + int(y)
+        result = x + y
         self.echo(result)
 
         return result
 
-
 parlay.start()
+
+
+
+
