@@ -8,5 +8,5 @@ run script.py to run the script
 
 
 
-The endpoints that the example scripts are controlling will be writen in python for simplicity's sake but they could be
+The items that the example scripts are controlling will be writen in python for simplicity's sake but they could be
 talking to any device over ethernet, serial, bluetooth, etc.
