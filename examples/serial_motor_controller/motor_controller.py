@@ -1,4 +1,4 @@
-from parlay.protocols.serial_line import ASCIILineProtocol, LineEndpoint
+from parlay.protocols.serial_line import ASCIILineProtocol, LineItem
 from parlay import parlay_command, start
 
 
@@ -6,18 +6,18 @@ class SerialMotorControllerProtocol(ASCIILineProtocol):
 
     def __init__(self, port):
         ASCIILineProtocol.__init__(self, port=port)
-        self.endpoints = [SerialMotorControllerItem(1, "Motor1", "Motor1", self),
-                          SerialMotorControllerItem(2, "Motor2", "Motor2", self)]
+        self.items = [SerialMotorControllerItem(1, "Motor1", "Motor1", self),
+                      SerialMotorControllerItem(2, "Motor2", "Motor2", self)]
 
     @classmethod
     def open(cls, broker, port="/dev/ttyUSB0"):
         return super(SerialMotorControllerProtocol, cls).open(broker, port=port, baudrate=115200, delimiter="\r")
 
 
-class SerialMotorControllerItem(LineEndpoint):
+class SerialMotorControllerItem(LineItem):
 
-    def __init__(self, motor_index, endpoint_id, name, protocol):
-        LineEndpoint.__init__(self, endpoint_id, name, protocol)
+    def __init__(self, motor_index, item_id, name, protocol):
+        LineItem.__init__(self, item_id, name, protocol)
         self._motor_index = motor_index
         self._protocol = protocol
 

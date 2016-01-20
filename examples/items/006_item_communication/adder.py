@@ -1,7 +1,7 @@
 import parlay
 
-@parlay.local_endpoint(auto_connect=True)
-class Adder(parlay.ParlayCommandEndpoint):
+@parlay.local_item(auto_connect=True)
+class Adder(parlay.ParlayCommandItem):
 
     @parlay.parlay_command()
     def echo(self, text):

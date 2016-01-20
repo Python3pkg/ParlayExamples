@@ -1,12 +1,12 @@
 import parlay
 import time
 
-# because the start() method doesn't return. We need to define all of our endpoints before we call it.
+# because the start() method doesn't return. We need to define all of our items before we call it.
 # we could also define them in different files and import them above.
 
-# THis decorator defines a local endpoint and auto_connects it to the parlay system on startup
-@parlay.local_endpoint(auto_connect=True)
-class Adder(parlay.ParlayCommandEndpoint):
+# THis decorator defines a local item and auto_connects it to the parlay system on startup
+@parlay.local_item(auto_connect=True)
+class Adder(parlay.ParlayCommandItem):
 
     @parlay.parlay_command()
     def echo(self, text):

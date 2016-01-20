@@ -1,8 +1,8 @@
 import parlay
 
 
-@parlay.local_endpoint(auto_connect=True)
-class Combiner(parlay.ParlayCommandEndpoint):
+@parlay.local_item(auto_connect=True)
+class Combiner(parlay.ParlayCommandItem):
 
     @parlay.parlay_command()
     def echo(self, text):
@@ -18,8 +18,8 @@ class Combiner(parlay.ParlayCommandEndpoint):
         :type x int
         :type y int
         """
-        adder = self.get_endpoint_by_name("Adder")
-        multiplier = self.get_endpoint_by_name("Multiplier")
+        adder = self.get_item_by_name("Adder")
+        multiplier = self.get_item_by_name("Multiplier")
         result = adder.add(x, y) + multiplier.multiply(x,y)
         self.echo(result)
 
