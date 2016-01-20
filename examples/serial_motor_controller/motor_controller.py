@@ -22,19 +22,18 @@ class SerialMotorControllerItem(LineItem):
         self._protocol = protocol
 
     @parlay_command()
-    def move_at_velocity(self, velocity):
+    def spin(self, speed):
         """
-        Move the motor at a constant velocity, between -10 and 10.
-        Negative velocity causes motor to spin in reverse.
-        :param velocity: speed to move
-        :type velocity int
+        Move the motor at a constant speed, between -9 and 9.  Negative speed causes motor to spin in reverse.
+        :param speed: speed to move
+        :type speed int
         :return: none
         """
-        if velocity > 10 or velocity < -10:
-            raise ValueError("Velocity outside range")
-        velocity = int(velocity)
-        direction = "f" if velocity >= 0 else "r"
-        self.send_raw_data("{}{}{}".format(self._motor_index, direction, velocity))
+        if speed > 9 or speed < -9:
+            raise ValueError("Speed outside range")
+        speed = int(speed)
+        direction = "f" if speed >= 0 else "r"
+        self.send_raw_data("{}{}{}".format(self._motor_index, direction, abs(speed)))
         return self.wait_for_data()
 
     @parlay_command()
@@ -43,7 +42,7 @@ class SerialMotorControllerItem(LineItem):
         Stop the motor
         :return: none
         """
-        return self.move_at_velocity(0)
+        return self.spin(0)
 
 
 if __name__ == "__main__":
