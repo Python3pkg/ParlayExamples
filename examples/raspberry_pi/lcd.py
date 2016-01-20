@@ -4,8 +4,8 @@ import LCD1602
 import time
 
 
-@parlay.local_endpoint(auto_connect=True)
-class LCD(parlay.ParlayCommandEndpoint):
+@parlay.local_item(auto_connect=True)
+class LCD(parlay.ParlayCommandItem):
 
     TEXT = parlay.parlay_property(val_type=str, default="Hello World")
 

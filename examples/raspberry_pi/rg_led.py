@@ -6,8 +6,8 @@ GPIO.setmode(GPIO.BOARD)       # Numbers GPIOs by physical location
 
 
 
-@parlay.local_endpoint(auto_connect=True)
-class RG_LED(parlay.ParlayCommandEndpoint):
+@parlay.local_item(auto_connect=True)
+class RG_LED(parlay.ParlayCommandItem):
 
     R_PIN = parlay.parlay_property(val_type=int, default=11)
     G_PIN = parlay.parlay_property(val_type=int, default=12)
@@ -21,7 +21,7 @@ class RG_LED(parlay.ParlayCommandEndpoint):
         GPIO.setup(self.G_PIN, GPIO.OUT)
         GPIO.output(self.G_PIN, GPIO.HIGH)
 
-        self.p_R = GPIO.PWM(self.R_PIN, 2000)  # set Frequece to 2KHz
+        self.p_R = GPIO.PWM(self.R_PIN, 2000)  # set Frequency to 2KHz
         self.p_G = GPIO.PWM(self.G_PIN, 2000)
 
         self.p_R.start(0)      # Initial duty Cycle = 0(leds off)

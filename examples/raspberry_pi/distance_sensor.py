@@ -3,8 +3,8 @@ import parlay
 import RPi.GPIO as GPIO
 import time
 
-@parlay.local_endpoint(auto_connect=True)
-class DISTANCE_SENSOR(parlay.ParlayCommandEndpoint):
+@parlay.local_item(auto_connect=True)
+class DISTANCE_SENSOR(parlay.ParlayCommandItem):
 
     TRIG_PIN = parlay.parlay_property(val_type=int, default=13)
     ECHO_PIN = parlay.parlay_property(val_type=int, default=15)
