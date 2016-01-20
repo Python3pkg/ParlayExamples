@@ -5,17 +5,16 @@ import time
 # we could also define them in different files and import them above.
 
 # THis decorator defines a local endpoint and auto_connects it to the parlay system on startup
-@parlay.local_endpoint(auto_connect=True)
-class Adder(parlay.ParlayCommandEndpoint):
+@parlay.local_item(auto_connect=True)
+class Adder(parlay.ParlayCommandItem):
 
     @parlay.parlay_command()
     def echo(self, text):
         """
         Will Echo whatever was sent to the python console
         """
-	while True:
-            print text
-            self.sleep(1)
+        print text
+        self.sleep(1)
 
     @parlay.parlay_command()
     def add(self, x, y):
@@ -28,6 +27,14 @@ class Adder(parlay.ParlayCommandEndpoint):
         self.echo(result)
 
         return result
+
+    @parlay.parlay_command()
+    def error_if_negative(self, x):
+        """
+        will error out if nagative
+        """
+        if int(x) < 0:
+            raise ValueError("X is NEGATIVE!")
 
 
 parlay.start()

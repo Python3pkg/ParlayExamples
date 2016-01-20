@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import parlay
 import RPi.GPIO as GPIO
+from parlay.utils import sleep
 
 GPIO.setmode(GPIO.BOARD)       # Numbers GPIOs by physical location
 
@@ -41,6 +42,16 @@ class RG_LED(parlay.ParlayCommandItem):
     def turn_off(self):
         self.p_G.ChangeDutyCycle(0)
         self.p_R.ChangeDutyCycle(0)
+
+    @parlay.parlay_command()
+    def blink(self, times):
+        for x in xrange(int(times)):
+            self.turn_green()
+            sleep(1)
+            self.turn_red()
+            sleep(1)
+
+
 
 if __name__ == "__main__":
     parlay.start()
