@@ -19,7 +19,6 @@ class SerialMotorControllerItem(LineItem):
     def __init__(self, motor_index, item_id, name, protocol):
         LineItem.__init__(self, item_id, name, protocol)
         self._motor_index = motor_index
-        self._protocol = protocol
 
     @parlay_command()
     def spin(self, speed):
@@ -29,9 +28,9 @@ class SerialMotorControllerItem(LineItem):
         :type speed int
         :return: none
         """
+        speed = int(speed)
         if speed > 9 or speed < -9:
             raise ValueError("Speed outside range")
-        speed = int(speed)
         direction = "f" if speed >= 0 else "r"
         self.send_raw_data("{}{}{}".format(self._motor_index, direction, abs(speed)))
         return self.wait_for_data()
