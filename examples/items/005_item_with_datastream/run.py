@@ -7,9 +7,9 @@ import parlay
 @parlay.local_item(auto_connect=True)
 class Adder(parlay.ParlayCommandItem):
                                # all of these parameters are optional, but recommended to
-    x = parlay.parlay_property(default=0, val_type=int)
-    y = parlay.parlay_property(default=0, val_type=int)
-    result = parlay.parlay_datastream(default=0)
+    x = parlay.ParlayProperty(default=0, val_type=int)
+    y = parlay.ParlayProperty(default=0, val_type=int)
+    result = parlay.ParlayDatastream(default=0)
 
     @parlay.parlay_command()
     def echo(self, text):

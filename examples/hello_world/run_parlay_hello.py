@@ -1,10 +1,10 @@
-from parlay import start, local_item, parlay_command, ParlayCommandItem, parlay_property
+from parlay import start, local_item, parlay_command, ParlayCommandItem, ParlayProperty
 
 
 @local_item(auto_connect=True)
 class CheerfulPerson(ParlayCommandItem):
 
-    hello_string = parlay_property(default="Hello World!", val_type=str)
+    hello_string = ParlayProperty(default="Hello World!", val_type=str)
 
     @parlay_command()
     def say_hello(self):

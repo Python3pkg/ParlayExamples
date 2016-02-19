@@ -10,8 +10,8 @@ GPIO.setmode(GPIO.BOARD)       # Numbers GPIOs by physical location
 @parlay.local_item(auto_connect=True)
 class RG_LED(parlay.ParlayCommandItem):
 
-    R_PIN = parlay.parlay_property(val_type=int, default=11)
-    G_PIN = parlay.parlay_property(val_type=int, default=12)
+    R_PIN = parlay.ParlayProperty(val_type=int, default=11)
+    G_PIN = parlay.ParlayProperty(val_type=int, default=12)
 
     @parlay.parlay_command()
     def init(self):

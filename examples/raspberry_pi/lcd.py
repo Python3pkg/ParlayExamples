@@ -7,7 +7,7 @@ import time
 @parlay.local_item(auto_connect=True)
 class LCD(parlay.ParlayCommandItem):
 
-    TEXT = parlay.parlay_property(val_type=str, default="Hello World")
+    TEXT = parlay.ParlayProperty(val_type=str, default="Hello World")
 
     @parlay.parlay_command()
     def init(self):

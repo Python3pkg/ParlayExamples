@@ -6,12 +6,12 @@ import time
 @parlay.local_item(auto_connect=True)
 class DISTANCE_SENSOR(parlay.ParlayCommandItem):
 
-    TRIG_PIN = parlay.parlay_property(val_type=int, default=13)
-    ECHO_PIN = parlay.parlay_property(val_type=int, default=15)
+    TRIG_PIN = parlay.ParlayProperty(val_type=int, default=13)
+    ECHO_PIN = parlay.ParlayProperty(val_type=int, default=15)
 
-    DISTANCE = parlay.parlay_datastream(default=0)
-    POLLING = parlay.parlay_property(val_type=int, default=0)
-    POLLING_INTERVAL = parlay.parlay_property(val_type=int, default=1)
+    DISTANCE = parlay.ParlayDatastream(default=0)
+    POLLING = parlay.ParlayProperty(val_type=int, default=0)
+    POLLING_INTERVAL = parlay.ParlayProperty(val_type=int, default=1)
 
     @parlay.parlay_command()
     def init(self):
