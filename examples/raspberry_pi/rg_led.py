@@ -45,7 +45,7 @@ class RG_LED(parlay.ParlayCommandItem):
 
     @parlay.parlay_command()
     def blink(self, times):
-        for x in xrange(int(times)):
+        for x in range(int(times)):
             self.turn_green()
             sleep(1)
             self.turn_red()

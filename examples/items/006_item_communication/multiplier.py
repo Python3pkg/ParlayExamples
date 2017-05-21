@@ -5,7 +5,7 @@ class Multiplier(parlay.ParlayCommandItem):
 
     @parlay.parlay_command()
     def echo(self, text):
-        print text
+        print(text)
 
     @parlay.parlay_command()
     def multiply(self, x, y):

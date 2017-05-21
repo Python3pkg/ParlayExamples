@@ -14,7 +14,7 @@ class Adder(parlay.ParlayCommandItem):
         """
         Will Echo whatever was sent to the python console
         """
-        print text
+        print(text)
         self.sleep(1)
 
     @parlay.parlay_command()

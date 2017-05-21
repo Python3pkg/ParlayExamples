@@ -18,10 +18,10 @@ dist.init()
 #get a handle but DONT wait on it to finish since this loops forever
 handle = LCD.send_parlay_command("loop")
 handle = dist.send_parlay_command("poll_forever")
-print "STARTING..."
+print("STARTING...")
 
 for i in range(60):
     str_distance = "%.3f" % dist.DISTANCE
-    print str_distance
+    print(str_distance)
     LCD.TEXT = str_distance
     sleep(1)

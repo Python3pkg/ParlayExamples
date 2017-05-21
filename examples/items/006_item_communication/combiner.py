@@ -6,7 +6,7 @@ class Combiner(parlay.ParlayCommandItem):
 
     @parlay.parlay_command()
     def echo(self, text):
-        print text
+        print(text)
 
     @parlay.parlay_command()
     def add_products(self, x, y):

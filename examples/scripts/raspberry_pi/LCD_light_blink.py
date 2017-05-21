@@ -14,14 +14,14 @@ handle.wait_for_complete()
 
 #get a handle but DONT wait on it to finish since this loops forever
 handle = LCD.send_parlay_command("loop")
-print "STARTING..."
+print("STARTING...")
 
 for i in range(30):
     LCD.TEXT = "GREEN"
-    print LCD.TEXT
+    print(LCD.TEXT)
     led.turn_green()
     sleep(1)
     LCD.TEXT = "RED"
-    print LCD.TEXT
+    print(LCD.TEXT)
     led.turn_red()
     sleep(1)

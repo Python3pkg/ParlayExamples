@@ -14,7 +14,7 @@ class Adder(parlay.ParlayCommandItem):
         :type text str
         """
 
-        print text
+        print(text)
 
     @parlay.parlay_command()
     def add(self, x, y):
